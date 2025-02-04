@@ -1,198 +1,208 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rasm va Form</title>
-  <style>
-    /* Umumiy sahifa stili */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rasm va Form</title>
+    <style>
+        /* Umumiy sahifa stili */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
-    /* Card konteyner stili */
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      max-width: 450px;
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+        /* Card konteyner stili */
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    /* Rasm uchun stil */
-    .card img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+        /* Rasm uchun stil */
+        .card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
 
-    /* Form elementlari */
-    .form-group {
-      margin-bottom: 15px;
+        /* Form elementlari */
+        .form-group {
+            margin-bottom: 15px;
 
 
-    }
+        }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-sizing: border-box;
-    }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
 
-    /* Save tugmasi */
-    .save-btn {
-      background-color: #8c4aff;
-      color: #fff;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      width: 100%;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+        /* Save tugmasi */
+        .save-btn {
+            background-color: #8c4aff;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    .save-btn:hover {
-      background-color: #6a2ae0;
-    }
+        .save-btn:hover {
+            background-color: #6a2ae0;
+        }
 
-    /* Telefon ekranlariga moslashuv */
-    @media (max-width: 480px) {
-      .card {
-        margin: 10px;
-        padding: 15px;
-      }
+        /* Telefon ekranlariga moslashuv */
+        @media (max-width: 480px) {
+            .card {
+                margin: 10px;
+                padding: 15px;
+            }
 
-      .save-btn {
-        font-size: 14px;
-      }
-    }
-    .green-section {
-      background-color: #4CAF50; /* Yashil rang */
-      color: white;
-      padding: 20px;
-    }
+            .save-btn {
+                font-size: 14px;
+            }
+        }
 
-    .form-section {
-      padding: 20px;
-    }
+        .green-section {
+            background-color: #4CAF50; /* Yashil rang */
+            color: white;
+            padding: 20px;
+        }
 
-    button {
-      background-color: #9b59b6; /* Purple color */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    select {
-  width: 50%; /* Kengligini 100% ga o'zgartiramiz */
-  height: 45px;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  box-sizing: border-box; /* Paddings va borderlarni hisobga olish */
-}
-    .form-group {
-  width: 80%;
-  max-width: 500px; /* Maksimal kenglik */
-  margin: 0 auto; /* Markazlashtirish */
-}
-    input, select, textarea {
-  outline: none; /* Fokusni ko'rsatishni o'chirish */
-  border: 1px solid #ccc; /* Normal border */
-}
+        .form-section {
+            padding: 20px;
+        }
 
-input:focus, select:focus, textarea:focus {
-  border-color: #4CAF50; /* Fokusda yashil rang */
-  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Fokusda nozik soyani qo'shish */
-  transform: translateY(0); /* Fokusda oldinga siljishni o'chirish */
-}
+        button {
+            background-color: #9b59b6; /* Purple color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
 
-label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
+        select {
+            width: 50%; /* Kengligini 100% ga o'zgartiramiz */
+            height: 45px;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Paddings va borderlarni hisobga olish */
+        }
 
-/* Media query: kichik ekranlar uchun moslashtirish */
-@media (max-width: 400px) {
-  .form-group {
-    width: 80%;
-  }
+        .form-group {
+            width: 80%;
+            max-width: 500px; /* Maksimal kenglik */
+            margin: 0 auto; /* Markazlashtirish */
+        }
 
-  select {
-    font-size: 14px;
-  }
-}
+        input, select, textarea {
+            outline: none; /* Fokusni ko'rsatishni o'chirish */
+            border: 1px solid #ccc; /* Normal border */
+        }
 
-    button:hover {
-      background-color: #8e44ad; /* Darker purple on hover */
-    }
-    .green-input {
-  border: none; /* Borderni olib tashlash */
-  padding: 10px;
-  margin-top: 10px;
-  width: 100%;
-  box-sizing: border-box;
-        outline: none
-}
-  </style>
+        input:focus, select:focus, textarea:focus {
+            border-color: #4CAF50; /* Fokusda yashil rang */
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Fokusda nozik soyani qo'shish */
+            transform: translateY(0); /* Fokusda oldinga siljishni o'chirish */
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        /* Media query: kichik ekranlar uchun moslashtirish */
+        @media (max-width: 400px) {
+            .form-group {
+                width: 80%;
+            }
+
+            select {
+                font-size: 14px;
+            }
+        }
+
+        button:hover {
+            background-color: #8e44ad; /* Darker purple on hover */
+        }
+
+        .green-input {
+            border: none; /* Borderni olib tashlash */
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none
+        }
+    </style>
 </head>
 <body>
 
-  <div class="card green-section">
+<div class="card green-section">
     <!-- Rasm -->
-      <div >
-    <img width="64" height="64" src="https://img.icons8.com/external-nawicon-flat-nawicon/64/external-Income-money-management-nawicon-flat-nawicon.png" alt="external-Income-money-management-nawicon-flat-nawicon" style="width: 60px; height: 60px; display: block; margin-left: auto; margin-right: auto;"/>
+    <div>
+        <img width="64" height="64"
+             src="https://img.icons8.com/external-nawicon-flat-nawicon/64/external-Income-money-management-nawicon-flat-nawicon.png"
+             alt="external-Income-money-management-nawicon-flat-nawicon"
+             style="width: 60px; height: 60px; display: block; margin-left: auto; margin-right: auto;"/>
 
-      </div>
+    </div>
 
     <!-- Form -->
     <form action="">
-      <div class="form-group">
-        <label id="description">How much?</label>
-        <input class="green-input" type="text" id="amount" value="$ " required name="amount">
-      </div>
+        <div class="form-group">
+            <label id="description">How much?</label>
+            <input class="green-input" type="text" id="amount" value="$ " required name="amount">
+        </div>
 
-      <div class="form-group" >
-        <label>Category</label>
-        <select id="category" required name="category_id">
+        <div class="form-group">
+            <label>Category</label>
+            <select id="category" required name="category_id">
                 <option value="">Select category</option>
-            <option value="category.pk">Category name</option>
-        </select>
-      </div>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" name='description' rows="3" placeholder="Add a description"></textarea>
-      </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name='description' rows="3" placeholder="Add a description"></textarea>
+        </div>
 
-      <button type="submit" class="save-btn">Save</button>
+        <button type="submit" class="save-btn">Save</button>
     </form>
-  </div>
-    <script>
-        document.getElementById('amount').addEventListener('input', function (e) {
-            let value = e.target.value.replace(/[^0-9]/g, '');
-            e.target.value = '$ ' + value;
-        });
-    </script>
+</div>
+<script>
+    document.getElementById('amount').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/[^0-9]/g, '');
+        e.target.value = '$ ' + value;
+    });
+</script>
 
 </body>
 </html>
