@@ -20,6 +20,9 @@ class User(BaseSQLModel, table=True):
     email : str = Field(unique=True)
     username : str = Field(unique=True)
     password : str = Field(min_length=5)
+    expenses : list['Expense'] = Relationship(back_populates='user' , cascade_delete=True)
+
+
 
 class TypeEnum(str , enum.Enum):
     INCOME = 'income'
@@ -31,7 +34,7 @@ class Category(BaseSQLModel , table=True):
     name: str = Field(VARCHAR(255))
     type : TypeEnum = Field(sa_column=Column(Enum(TypeEnum,values_callable=lambda x: [i.value for i in x])))
     icon : str
-    products : list['Expense'] = Relationship(back_populates='category' , cascade_delete=True)
+    expenses : list['Expense'] = Relationship(back_populates='category' , cascade_delete=True)
 
 class Expense(BaseSQLModel , table = True):
     type : TypeEnum = Field(sa_column=Column(Enum(TypeEnum,values_callable=lambda x: [i.value for i in x])))
