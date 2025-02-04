@@ -22,7 +22,7 @@ SessionDep = Annotated[Session, Depends(get_session)]
 @app.get('/income/form')
 async def income_form(request:Request , session : SessionDep ):
     print(request)
-    categories = session.exec(select(Category)).fetchall()
+    categories = session.exec(select(Category).where(Category.type=='income')).fetchall()
     return templates.TemplateResponse(request , 'income.html',{'categories':categories})
 
 
