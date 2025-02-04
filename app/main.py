@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Request
+from typing import Annotated
+
+from fastapi import FastAPI, Request, Depends
 from sqlmodel import Session, select
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
@@ -10,13 +12,18 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+def get_session():
+    with Session(engine) as session:
+        yield session
+
+SessionDep = Annotated[Session, Depends(get_session)]
 
 
 @app.get('/income/form')
-async def income_form(request:Request):
-    with Session(engine) as session:
-        categories = session.exec(select(Category)).all()
-        return templates.TemplateResponse('income.html',{'request':request,'categories':categories})
+async def income_form(request:Request , session : SessionDep ):
+    print(request)
+    categories = session.exec(select(Category)).fetchall()
+    return templates.TemplateResponse(request , 'income.html',{'categories':categories})
 
 
 
