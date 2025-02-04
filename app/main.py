@@ -27,12 +27,9 @@ async def income_form(request:Request , session : SessionDep ):
 
 
 
-
-# @app.get("/")
-# async def root():
-#     return {"message": "Hello World"}
-#
-#
-# @app.get("/hello/{name}")
-# async def say_hello(name: str):
-#     return {"message": f"Hello {name}"}
+# Asosiy endpoint
+@app.get("/", response_class=HTMLResponse)
+async def expanse(request: Request, session: Session = Depends(get_session)):
+    expenses = session.exec(select(Expense)).all()
+    income = session.exec(func.sum(Expense.amount)).fil(Expense.type == 'income').one_or_none()
+    return templates.TemplateResponse("home-page.html", {"request": request, "expenses": expenses, "income": income})
