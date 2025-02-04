@@ -1,7 +1,9 @@
 from typing import Annotated
 
 from fastapi import FastAPI, Request, Depends
+from sqlalchemy import func
 from sqlmodel import Session, select
+from starlette.responses import HTMLResponse
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
@@ -31,5 +33,5 @@ async def income_form(request:Request , session : SessionDep ):
 @app.get("/", response_class=HTMLResponse)
 async def expanse(request: Request, session: Session = Depends(get_session)):
     expenses = session.exec(select(Expense)).all()
-    income = session.exec(func.sum(Expense.amount)).fil(Expense.type == 'income').one_or_none()
+    income = session.exec(func.sum(Expense.amount)).where(Expense.type == 'income').one_or_none()
     return templates.TemplateResponse("home-page.html", {"request": request, "expenses": expenses, "income": income})
