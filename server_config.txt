@@ -1,0 +1,15 @@
+Fayl: /etc/nginx/sites-available/fastapi_project
+
+
+server {
+    listen       8003;
+    server_name  5.42.220.153;
+
+    location / {
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_pass         http://unix:/var/www/web/fastapi_project/fastapi.sock;
+    }
+}
